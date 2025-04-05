@@ -1,0 +1,16 @@
+[project]
+name = "ComfyUI-MegaTTS"
+description = "ComfyUI-MegaTTS is is a ComfyUI custom node based on the ByteDance/MegaTTS3 model, which provides high-quality text-to-speech synthesis using advanced latent diffusion techniques."
+version = "0.0.1"
+license = {file = "LICENSE"}
+
+dependencies = [""]
+    
+[project.urls]
+Repository = "https://github.com/1038lab/ComfyUI-MegaTTS"
+# Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "ailab"
+DisplayName = "ComfyUI-MegaTTS"
+Icon = ""
