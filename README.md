@@ -26,16 +26,16 @@ A ComfyUI custom node based on ByteDance [MegaTTS3](https://huggingface.co/ByteD
 1. Clone this repository to ComfyUI's `custom_nodes` directory:
    ```bash
    cd ComfyUI/custom_nodes
-   git clone https://github.com/1038lab/ComfyUI-MegaTTS.git
+   git clone https://github.com/gordon123/ComfyUI-MegaTTS3-a.git
    ```
 
 2. Install required dependencies:
    ```bash
-   cd ComfyUI-MegaTTS
+   cd ComfyUI-MegaTTS3-a
    pip install -r requirements.txt
    ```
 
-3. The node will automatically download required models on first use, or you can manually:
+3. The node will automatically download required models on first use, in this folder "comfyui/models/TTS/MegaTTS3/" or you can manually below:
 
 ## Manual Models  Download 
 
