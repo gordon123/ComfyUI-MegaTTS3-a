@@ -1,6 +1,8 @@
 # ComfyUI-MegaTTS
 
 A ComfyUI custom node based on ByteDance [MegaTTS3](https://huggingface.co/ByteDance/MegaTTS3), enabling high-quality text-to-speech synthesis with voice cloning capabilities for both Chinese and English.
+![comfyui-megaTTS](https://github.com/user-attachments/assets/c395e3f8-099f-4471-bfa3-2d94d682a7cf)
+
 
 ## Features
 
@@ -76,6 +78,7 @@ comfyui/models/TTS/MegaTTS3/
    ```
 
 ## Voice Folder and Voice Maker
+![Voice_Maker](https://github.com/user-attachments/assets/b3713f9a-2f70-4bf0-a6f4-7e3110bba987)
 
 ### Voice Folder Structure
 
