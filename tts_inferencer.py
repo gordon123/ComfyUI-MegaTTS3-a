@@ -9,6 +9,8 @@ import soundfile as sf
 import io
 import sys
 from contextlib import redirect_stdout, redirect_stderr
+from pydub import AudioSegment
+AudioSegment.ffprobe = "/usr/bin/ffprobe"
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
