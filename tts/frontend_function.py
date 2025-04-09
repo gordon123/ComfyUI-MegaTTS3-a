@@ -27,7 +27,7 @@ def g2p(self, text_inp):
     input_ids = torch.LongTensor([txt_token+[145+self.speech_start_idx]]).to(self.device)
 
     # model forward
-    with torch.cuda.amp.autocast(dtype=self.precision, enabled=True):
+    with torch.amp.autocast('cuda', dtype=self.precision, enabled=True):
         outputs = self.g2p_model.generate(input_ids, max_new_tokens=256, do_sample=True, top_k=1, eos_token_id=800+1+self.speech_start_idx)
     
     # process outputs
@@ -46,7 +46,7 @@ def align(self, wav):
         token = torch.LongTensor([[798]]).to(self.device)
         audio_features = self.aligner_lm.embed_audio(mel)
         for i in range(768):
-            with torch.cuda.amp.autocast(dtype=self.precision, enabled=True):
+            with torch.amp.autocast('cuda', dtype=self.precision, enabled=True):
                 logits = self.aligner_lm.logits(token, audio_features, None)
                 token_pred = torch.argmax(F.softmax(logits[:, -1], dim=-1), 1)[None]
                 token = torch.cat([token, token_pred], dim=1)
@@ -85,7 +85,7 @@ def make_dur_prompt(self, mel2ph_ref, ph_ref, tone_ref):
     last_dur_pos_prompt = ctx_dur_tokens.shape[1]
     dur_spk_pos_ids_flat = range(0, last_dur_pos_prompt)
     dur_spk_pos_ids_flat = torch.LongTensor([dur_spk_pos_ids_flat]).to(self.device)
-    with torch.cuda.amp.autocast(dtype=self.precision, enabled=True):
+    with torch.amp.autocast('cuda', dtype=self.precision, enabled=True):
         _, incremental_state_dur_prompt = self.dur_model.infer(
             ph_ref, {'tone': tone_ref}, None, None, None,
             ctx_vqcodes=ctx_dur_tokens, spk_pos_ids_flat=dur_spk_pos_ids_flat, return_state=True)
@@ -101,7 +101,7 @@ def dur_pred(self, ctx_dur_tokens, incremental_state_dur_prompt, ph_pred, tone_p
     dur_spk_pos_ids_flat = torch.LongTensor([dur_spk_pos_ids_flat]).to(self.device)
     last_dur_pos_prompt = last_dur_pos_prompt + txt_len
 
-    with torch.cuda.amp.autocast(dtype=self.precision, enabled=True):
+    with torch.amp.autocast('cuda', dtype=self.precision, enabled=True):
         dur_pred = self.dur_model.infer(
             ph_pred, {'tone': tone_pred}, None, None, None,
             incremental_state=incremental_state_dur,
