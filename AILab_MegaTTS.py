@@ -16,10 +16,7 @@ class MegaTTS3:
     
     @classmethod
     def INPUT_TYPES(s):
-        if not MegaTTS3.initialization_done:
-            initialize()
-            MegaTTS3.initialization_done = True
-            
+        # Removed initialization here to prevent startup loading
         voice_samples = get_voice_samples()
         default_voice = voice_samples[0] if voice_samples else ""
         return {
@@ -42,6 +39,11 @@ class MegaTTS3:
                        pronunciation_strength, voice_similarity, 
                        reference_voice):
         
+        # Initialize when the node is actually used
+        if not MegaTTS3.initialization_done:
+            initialize()
+            MegaTTS3.initialization_done = True
+            
         if MegaTTS3.infer_instance_cache is not None:
             infer_instance = MegaTTS3.infer_instance_cache
         else:
@@ -81,10 +83,7 @@ class MegaTTS3S:
     infer_instance_cache = None
     @classmethod
     def INPUT_TYPES(s):
-        if not getattr(MegaTTS3, 'initialization_done', False):
-            initialize()
-            MegaTTS3.initialization_done = True
-            
+        # Remove initialization here 
         voice_samples = get_voice_samples()
         default_voice = voice_samples[0] if voice_samples else ""
         return {
@@ -101,6 +100,11 @@ class MegaTTS3S:
     CATEGORY = "🧪AILab/🔊Audio"
 
     def generate_speech(self, input_text, language, reference_voice):
+        # Initialize when the node is actually used
+        if not MegaTTS3.initialization_done:
+            initialize()
+            MegaTTS3.initialization_done = True
+            
         if MegaTTS3S.infer_instance_cache is not None:
             infer_instance = MegaTTS3S.infer_instance_cache
         else:
@@ -148,7 +152,7 @@ class MegaTTS_CleanMemory:
     RETURN_TYPES = ("*",)
     RETURN_NAMES = ("output",)
     FUNCTION = "clean_memory"
-    CATEGORY = "🧪AILab/🔊Audio"
+    CATEGORY = "🧪AILab/🛠️UTIL"
 
     def clean_memory(self, any):
         if MegaTTS3.infer_instance_cache is not None:

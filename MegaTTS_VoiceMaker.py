@@ -13,10 +13,6 @@ class MegaTTS_VoiceMaker:
     
     @classmethod
     def INPUT_TYPES(s):
-        if not getattr(MegaTTS3, 'initialization_done', False):
-            initialize()
-            MegaTTS3.initialization_done = True
-            
         return {
             "required": {
                 "audio_in": ("AUDIO", {"tooltip": "Input audio to be converted."}),
@@ -34,6 +30,10 @@ class MegaTTS_VoiceMaker:
     CATEGORY = "🧪AILab/🔊Audio"
 
     def convert_voice(self, audio_in, voice_name, path="", trim_silence=True, normalize_volume=True, max_duration=10.0):
+        if not MegaTTS3.initialization_done:
+            initialize()
+            MegaTTS3.initialization_done = True
+            
         if MegaTTS_VoiceMaker.infer_instance_cache is not None:
             infer_instance = MegaTTS_VoiceMaker.infer_instance_cache
         else:

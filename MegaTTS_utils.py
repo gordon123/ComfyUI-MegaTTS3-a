@@ -137,7 +137,3 @@ def initialize():
         print(f"Error during initialization: {str(e)}")
         traceback.print_exc()
         return False
-
-if __name__ == "__main__":
-    print("Starting MegaTTS initialization...")
-    initialize() 
