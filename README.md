@@ -35,12 +35,9 @@ A ComfyUI custom node based on ByteDance [MegaTTS3](https://huggingface.co/ByteD
    pip install -r requirements.txt
    ```
 
-3. The node will automatically download required models on first use, or you can manually trigger the download:
-   ```bash
-   python beta/ModelDownloader.py
-   ```
+3. The node will automatically download required models on first use, or you can manually:
 
-## Models and Manual Download
+## Manual Models  Download 
 
 This extension uses modified versions of ByteDance's MegaTTS3 models. While the models are automatically downloaded during first use, you can manually download them from Hugging Face:
 
