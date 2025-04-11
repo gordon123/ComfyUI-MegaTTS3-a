@@ -1,4 +1,4 @@
-# ComfyUI-MegaTTS
+# ComfyUI-MegaTTS / This repo for mypersonal testing, please refer to original repo for NEW updating
 
 A ComfyUI custom node based on ByteDance [MegaTTS3](https://huggingface.co/ByteDance/MegaTTS3), enabling high-quality text-to-speech synthesis with voice cloning capabilities for both Chinese and English.
 ![comfyui-megaTTS](https://github.com/user-attachments/assets/c395e3f8-099f-4471-bfa3-2d94d682a7cf)
